@@ -17,7 +17,9 @@ bool runflag = true;
 int buttonstate = 0; // variable for reading the pushbutton status
 //int buttonPresses = 0;
 //int buttonPress = 0;
-bool dummy = false;
+bool buttondummy = false;
+bool sensordummy = false;
+
 
 #include <Servo.h> // servo position
 Servo myservo;
@@ -60,6 +62,9 @@ void loop() {
   }
 
   else {
+sensordummy = true;
+  }
+    while (sensordummy == true){
     digitalWrite(ledPin, LOW);
     delay(10);
 
@@ -76,14 +81,17 @@ void loop() {
         delayMicroseconds(50);
         digitalWrite(stepPin, LOW);
         delayMicroseconds(50);
-
+        sensordummy = false;
+      }
+    }
+    }
 buttonstate = digitalRead(buttonPin);
 
   // check if the pushbutton is pressed. If it is, the buttonState is HIGH:
   if (buttonstate == LOW) {
     // turn motor on:
     
-    dummy = true;
+    buttondummy = true;
     }
     
   else if (buttonstate == HIGH) {
@@ -92,7 +100,7 @@ buttonstate = digitalRead(buttonPin);
     digitalWrite(dirPin, LOW);
     digitalWrite(stepPin, LOW);
   }
-    while (dummy == true){
+    while (buttondummy == true){
      digitalWrite(dirPin,HIGH); // Enables the motor to move in a particular direction
   // Makes 200 pulses for making one full cycle rotation
   for(int x = 0; x < 200; x++) {
@@ -100,18 +108,16 @@ buttonstate = digitalRead(buttonPin);
     delayMicroseconds(500); 
     digitalWrite(stepPin,LOW); 
     delayMicroseconds(500); 
-    dummy = false;
+    buttondummy = false;
   }
   }
-
+}
+  
 
 
 
         
-      }
-    }
-
-  }
+    
   
 //buttonstate = digitalRead(buttonPin);
 //
@@ -141,7 +147,7 @@ buttonstate = digitalRead(buttonPin);
 //  }
 //  
   
-}
+
 
 void askquestion() {
   Serial.println("What size filament is it?");
