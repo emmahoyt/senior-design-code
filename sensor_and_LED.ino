@@ -3,7 +3,7 @@
 // WITH ODD NUMBER OF BUTTON PUSHES THE MOTOR SHOULD BE ON AND WITH EVEN NUMBER OF BUTTON PUSHES THE MOTOR SHOULD BE OFF
 
 // defines pins numbers
-
+//TEST MARCO
 int runtime = 1; // time to run motor in seconds
 
 
