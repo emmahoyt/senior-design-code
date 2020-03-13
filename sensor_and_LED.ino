@@ -71,9 +71,9 @@ sensor1dummy = true;
       Serial.println(tstart);
       while ((millis() - tstart) < (runtime * 1000)) {
         digitalWrite(stepPin, HIGH);
-        delayMicroseconds(50);
+        delayMicroseconds(500);
         digitalWrite(stepPin, LOW);
-        delayMicroseconds(50);
+        delayMicroseconds(500);
         sensor1dummy = false;
         motor1dummy = false;
       }
@@ -87,9 +87,9 @@ if (motor1dummy == false) {
 
     for (int i = 0; i < 2000; i++) {
       digitalWrite(stepPin, HIGH);
-        delayMicroseconds(50);
+        delayMicroseconds(500);
         digitalWrite(stepPin, LOW);
-        delayMicroseconds(50);
+        delayMicroseconds(500);
         
     }
       myservo.write(180);              // tell servo to go to position in variable 'pos'
